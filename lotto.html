@@ -1415,6 +1415,7 @@ Is it okay for the winner to giveaway this Pokémon in the future: <input type="
 </div>
 
 <script>
+hideBothOptions();
 function submit() {
 	var username = document.getElementById("username").value;
 	var ot = document.getElementById("ot").value;
@@ -1478,6 +1479,11 @@ function submit() {
 	result.value += " |" + amount;
 
   document.getElementById("prompt").hidden = false;
+}
+
+function hideBothOptions(){
+  document.getElementById("raid-option").hidden = true;
+  document.getElementById("pogo-option").hidden = true;
 }
 
 function hideRaidOption() {
