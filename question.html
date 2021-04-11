@@ -38,9 +38,12 @@ PS! username: <input type="text" id="username"><br><br>
 How did you obtain this Pokémon: <br>
 <input type="radio" name="obtain" id="self" checked> I caught, bred, or redeemed this Pokemon myself.<br>
 <input type="radio" name="obtain" id="won"> I won this Pokémon from a previous OK2GA giveaway.<br><br>
-Was the Pokemon obtained in Gen 8?  <input type="radio" name="gen" id="gen8" checked onclick="showRaidOption()">Yes <input type="radio" name="gen" id="oldgen" onclick="hideRaidOption()">No<br>
+Was the Pokemon obtained in Gen 8? <input type="radio" name="gen" id="gen8" onclick="showRaidOption()">Yes <input type="radio" name="gen" id="oldgen" onclick="hideRaidOption()">No<br>
 <div id="raid-option">
   Is it from a raid? <input type="radio" name="raid" id="raided">Yes <input type="radio" name="raid" id="nonraid" checked>No
+</div>
+<div id="pogo-option">
+  Was the Pokemon obtained from Pokemon GO? <input type="radio" name="pogo" id="yesGO">Yes <input type="radio" name="pogo" id="noGO" checked>No
 </div><br>
     
 Pokémon species: 
@@ -1412,6 +1415,7 @@ Is it okay for the winner to giveaway this Pokémon in the future: <input type="
 </div>
 
 <script>
+hideBothOptions();
 var numAnswers = 1;
 
 function addAnswer() {
@@ -1484,6 +1488,9 @@ function submit() {
       result.value += "[Raid] ";
     }
   }
+  if (document.getElementById("yesGO").checked){
+    result.value += "[Pokemon GO] ";
+  }
 	if (document.getElementById("y").checked) {
 		result.value += "[OK2GA] ";
 	}
@@ -1510,12 +1517,19 @@ function submit() {
   document.getElementById("prompt").hidden = false;
 }
 
+function hideBothOptions(){
+  document.getElementById("raid-option").hidden = true;
+  document.getElementById("pogo-option").hidden = true;
+}
+
 function hideRaidOption() {
   document.getElementById("raid-option").hidden = true;
+  document.getElementById("pogo-option").hidden = false;
 }
 
 function showRaidOption() {
   document.getElementById("raid-option").hidden = false;
+  document.getElementById("pogo-option").hidden = true;
 }
 </script>
 
