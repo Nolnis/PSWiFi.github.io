@@ -35,9 +35,6 @@ textarea {
 
 <div class="form" style="line-height: 16px; padding: 12px 0 0 0">
 PS! username: <input type="text" id="username"><br><br>
-How did you obtain this Pokémon: <br>
-<input type="radio" name="obtain" id="self" checked> I caught, bred, or redeemed this Pokemon myself.<br>
-<input type="radio" name="obtain" id="won"> I won this Pokémon from a previous OK2GA giveaway.<br><br>
 Was the Pokemon obtained in Gen 8? <input type="radio" name="gen" id="gen8" onclick="showRaidOption()">Yes <input type="radio" name="gen" id="oldgen" onclick="hideRaidOption()">No<br>
 <div id="raid-option">
   Is it from a raid? <input type="radio" name="raid" id="raided">Yes <input type="radio" name="raid" id="nonraid" checked>No
@@ -1405,7 +1402,6 @@ Question: <input type="text" id="question" size="50"><br>
   Answer: <input type="text" id="answer0"><br>
 </div>
 <button onclick="addAnswer()">Add answer</button><br><br>
-Is it okay for the winner to giveaway this Pokémon in the future: <input type="radio" name="ok2ga" id="y"> Yes <input type="radio" name="ok2ga" id="n" checked> No<br><br>
 <button onclick="submit()">Finish</button>
 
 <div id="prompt" hidden="true">Copy this text, and PM it to a member of Room Staff (start from % and go up)<br>and politely ask to start your GA.</div><br><br>
@@ -1491,14 +1487,6 @@ function submit() {
   if (document.getElementById("yesGO").checked){
     result.value += "[Pokemon GO] ";
   }
-	if (document.getElementById("y").checked) {
-		result.value += "[OK2GA] ";
-	}
-	if (document.getElementById("self").checked) {
-		result.value += "Self-Obtained ";
-	} else {
-		result.value += "GA-Won ";
-	}
 	if (nickname != "") {
 		result.value += nickname + " the ";
 	}
